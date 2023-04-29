@@ -1,16 +1,62 @@
 "use client";
 
-import React, { useState } from "react";
-
+import React, { useState, useRef } from "react";
 import Image from "next/image";
+import useSWR from "swr";
 
 import demo from "../../public/demo.webp";
-import Button from "@/components/Button";
 
-export default function Home() {
+const Home = () => {
   // The right arrangement is to convert from Regex to Natural Language.
   // Otherwise, it is reversed
   const [reversed, setReversed] = useState(false);
+  const [regexData, setRegexData] = useState("");
+  const [naturalLanguageData, setNaturalLanguageData] = useState("");
+  const [requestType, setRequestType] = useState<"to-eng" | "to-regex">(
+    "to-eng"
+  );
+
+  const [fieldsEmpty, setFieldsEmpty] = useState<boolean>(true);
+  const [isFetching, setIsFetching] = useState(false);
+
+  // if (regexData !== "" || naturalLanguageData !== "") {
+  //   setFieldsEmpty(true);
+  // } else {
+  //   setFieldsEmpty(false);
+  // }
+
+  const handleReverseChange = () => {
+    console.log("Change");
+    if (reversed === true) {
+      setReversed(false);
+      setRequestType("to-eng");
+    } else {
+      setReversed(true);
+      setRequestType("to-regex");
+    }
+  };
+
+  async function handleFetch() {
+    console.log("Fetching");
+    fetch(`/api/${requestType}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: requestType === "to-eng" ? regexData : naturalLanguageData,
+      }),
+    })
+      .then((data) => data.json())
+      .then((res) => {
+        requestType === "to-eng"
+          ? setNaturalLanguageData(res.eng)
+          : setRegexData(res.regex);
+      });
+  }
+
+  console.log("Components");
+
   return (
     <main className="">
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
@@ -26,7 +72,12 @@ export default function Home() {
             {/* <img src="/img/logo.svg" className="h-6" alt="Tailwind Play" /> */}
             <div className="flex items-center justify-between">
               <h2 className="font-bold">Regexify</h2>
-              <Image src={demo} alt="Profile" width={30} />
+              <Image
+                src={demo}
+                alt="Profile"
+                width={30}
+                className="cursor-pointer rounded-full ring ring-sky-400"
+              />
             </div>
             <div className="divide-y divide-gray-300/50">
               <div className="space-y-6 py-2 text-sm font-medium leading-6 text-gray-400">
@@ -45,6 +96,9 @@ export default function Home() {
                         <textarea
                           placeholder="Regex pattern"
                           className="font-space h-full w-full"
+                          disabled={reversed === true}
+                          value={regexData}
+                          onChange={(e) => setRegexData(e.target.value)}
                         ></textarea>
                       </div>
                     </div>
@@ -56,6 +110,11 @@ export default function Home() {
                         <textarea
                           placeholder="Natural Language"
                           className="font-space h-full w-full"
+                          disabled={reversed === false}
+                          value={naturalLanguageData}
+                          onChange={(e) =>
+                            setNaturalLanguageData(e.target.value)
+                          }
                         ></textarea>
                       </div>
                     </div>
@@ -67,20 +126,31 @@ export default function Home() {
                 </p>
                 {/* sign up button disappears upon login */}
                 <div className="flex items-center justify-between pb-3">
-                  <Button>Log in</Button>
-                  <button type="button" className="font-normal">
+                  <button
+                    type="button"
+                    className="mr-2 flex w-[7rem] cursor-pointer items-center justify-center rounded-lg bg-sky-500 px-5 py-1.5 text-sm font-semibold text-white outline-0 transition-all duration-150 ease-in-out hover:bg-sky-600 focus:outline-0 focus:ring-0
+                    focus:ring-sky-600"
+                    onClick={handleFetch}
+                  >
+                    Magic!
+                  </button>
+                  <button
+                    type="button"
+                    className="flex items-center font-normal"
+                    onClick={() => alert("Saving to database")}
+                  >
                     Save
                   </button>
                   <button
                     type="button"
                     className="flex items-center font-normal"
-                    onClick={() => setReversed(!reversed)}
+                    onClick={handleReverseChange}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
-                      stroke-width="1.5"
+                      strokeWidth="1.5"
                       stroke="currentColor"
                       className="mr-[2px] h-[14px] w-[14px]"
                     >
@@ -119,4 +189,6 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Home;
