@@ -1,9 +1,16 @@
+"use client";
+
+import React, { useState } from "react";
+
 import Image from "next/image";
 
 import demo from "../../public/demo.webp";
 import Button from "@/components/Button";
 
 export default function Home() {
+  // The right arrangement is to convert from Regex to Natural Language.
+  // Otherwise, it is reversed
+  const [reversed, setReversed] = useState(false);
   return (
     <main className="">
       <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
@@ -27,32 +34,65 @@ export default function Home() {
                   Combining Regex with Artificial Intelligence. Only magic can
                   happen! Convert Regex to Natural Language and back!
                 </p>
-                <div className="font-space">
-                  <div className="">
-                    <div className="field">
-                      <textarea
-                        placeholder="Regex pattern"
-                        className="font-space h-full w-full rounded"
-                      ></textarea>
+                <div
+                  className={`flex h-full ${
+                    reversed ? "flex-col-reverse" : "flex-col"
+                  } justify-between`}
+                >
+                  <div className="font-space">
+                    <div className="">
+                      <div className="">
+                        <textarea
+                          placeholder="Regex pattern"
+                          className="font-space h-full w-full"
+                        ></textarea>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="font-space">
-                  <div className="">
-                    <div className="field">
-                      <textarea
-                        placeholder="Regex pattern"
-                        className="font-space h-full w-full rounded"
-                      ></textarea>
+                  <div className="font-space">
+                    <div className="">
+                      <div className="">
+                        <textarea
+                          placeholder="Natural Language"
+                          className="font-space h-full w-full"
+                        ></textarea>
+                      </div>
                     </div>
                   </div>
                 </div>
-                {/* <p>
+                <p>
                   Perfect for learning how the framework works, prototyping a
                   new idea, or creating a demo to share online.
-                </p> */}
-                <Button>Sign up</Button>
+                </p>
+                {/* sign up button disappears upon login */}
+                <div className="flex items-center justify-between pb-3">
+                  <Button>Log in</Button>
+                  <button type="button" className="font-normal">
+                    Save
+                  </button>
+                  <button
+                    type="button"
+                    className="flex items-center font-normal"
+                    onClick={() => setReversed(!reversed)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      className="mr-[2px] h-[14px] w-[14px]"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
+                      />
+                    </svg>
+                    Change order
+                  </button>
+                </div>
               </div>
               <div className="pt-8 text-sm font-medium leading-7">
                 <p className="text-gray-900">Links</p>
