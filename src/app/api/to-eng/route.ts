@@ -37,8 +37,6 @@ export async function POST(request: Request, res: Response) {
 
     try {
         let received = await naturalLanguageGenerator(userInput.text);
-        // console.log(received);
-
         naturalLanguage = received.value;
     } catch (e) {
         console.log(e);

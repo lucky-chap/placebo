@@ -37,8 +37,6 @@ export async function POST(request: Request, res: Response) {
 
     try {
         let received = await regexGenerator(userInput.text);
-        // console.log(received);
-
         regex = received.value;
     } catch (e) {
         console.log(e);
