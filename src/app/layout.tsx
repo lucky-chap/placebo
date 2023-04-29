@@ -1,4 +1,5 @@
 import "./globals.css";
+import StateProvider from "@/providers/StateProvider";
 import { Space_Grotesk as SpaceGrotesk } from "next/font/google";
 
 const spaceGrotesk = SpaceGrotesk({
@@ -23,7 +24,9 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.className} relative flex-col text-gray-800`}
       >
-        <main className="min-h-screen">{children}</main>
+        <StateProvider>
+          <main className="min-h-screen">{children}</main>
+        </StateProvider>
       </body>
     </html>
   );

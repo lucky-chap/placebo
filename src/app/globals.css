@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.logoGradient {
+  background: rgb(236, 72, 153);
+  background: linear-gradient(
+    355deg,
+    rgba(236, 72, 153, 1) 20%,
+    rgba(14, 165, 233, 1) 91%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
 textarea {
   height: 10rem !important;
   width: 100%;
@@ -9,8 +19,8 @@ textarea {
   padding: 0.5rem;
   border-radius: 0.7rem;
   border-width: 3px;
-  border-color: #ebe9ec;
-  background-color: #f4f4f5;
+  border-color: #f4f4f5;
+  background-color: #f9fafb;
   outline: none;
   color: #7b818b;
 }
