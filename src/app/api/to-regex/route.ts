@@ -4,9 +4,11 @@ import { NextResponse } from "next/server";
 
 import MindsDB from "mindsdb-js-sdk";
 
+import { env } from "@/env.mjs"
+
 const mindsDBUserData = {
-    user: process.env.MINDSDB_USER,
-    password: process.env.MINDSDB_PASSWORD,
+    user: env.MINDSDB_USER,
+    password: env.MINDSDB_PASSWORD,
 };
 
 const createConnection = async (user) => {
