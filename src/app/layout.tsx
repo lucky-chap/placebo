@@ -1,5 +1,6 @@
 import "./globals.css";
 import StateProvider from "@/providers/StateProvider";
+import AuthProvider from "@/providers/AuthProvider";
 import { Space_Grotesk as SpaceGrotesk } from "next/font/google";
 
 const spaceGrotesk = SpaceGrotesk({
@@ -10,8 +11,8 @@ const spaceGrotesk = SpaceGrotesk({
 });
 
 export const metadata = {
-  title: "Regexify",
-  description: "Combining AI with Regex",
+  title: "Merlin - Magical Tools For Everyone",
+  description: "A bit of magic here and there, ya know!",
 };
 
 export default function RootLayout({
@@ -24,9 +25,11 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.className} relative flex-col text-gray-800`}
       >
-        <StateProvider>
-          <main className="min-h-screen">{children}</main>
-        </StateProvider>
+        <AuthProvider>
+          <StateProvider>
+            <main className="min-h-screen">{children}</main>
+          </StateProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -3,7 +3,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useRecoilState } from "recoil";
+
 import { magicState } from "@/state";
 
 import demo from "../../public/demo.webp";
@@ -29,6 +32,8 @@ const item = {
 };
 
 const SQLSorcery = () => {
+  const { data: session, status, update } = useSession();
+
   const [magicType, setMagicType] = useRecoilState(magicState);
 
   const [reversed, setReversed] = useState(false);
@@ -130,8 +135,8 @@ const SQLSorcery = () => {
                     className="h-[14px] w-[14px] font-bold text-sky-500"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       fill="#38BDF8"
                       d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
                     />
@@ -140,9 +145,14 @@ const SQLSorcery = () => {
               </motion.h2>
               <motion.div className="" variants={item}>
                 <Image
-                  src={demo}
+                  src={
+                    status === "unauthenticated"
+                      ? demo
+                      : (session?.user?.image as string)
+                  }
                   alt="Profile"
                   width={30}
+                  height={30}
                   className="cursor-pointer rounded-full ring ring-sky-400"
                 />
               </motion.div>
@@ -208,15 +218,29 @@ const SQLSorcery = () => {
                   className="flex items-center justify-between py-3"
                   variants={item}
                 >
-                  <button
-                    type="button"
-                    className="mr-2 flex w-[7rem] cursor-default items-center justify-center rounded-lg bg-sky-500 px-5 py-1.5 text-sm font-semibold text-white outline-0 transition-all duration-150 ease-in-out hover:bg-sky-600 focus:outline-0 focus:ring-0
+                  {status === "unauthenticated" ? (
+                    <button
+                      type="button"
+                      className="mr-2 flex w-[7rem] cursor-default items-center justify-center rounded-lg bg-sky-500 px-5 py-1.5 text-sm font-semibold text-white outline-0 transition-all duration-150 ease-in-out hover:bg-sky-600 focus:outline-0 focus:ring-0
                     focus:ring-sky-600"
-                    onClick={handleFetch}
-                    disabled={isFetching}
-                  >
-                    {isFetching ? "Loading..." : "Alakazam!"}
-                  </button>
+                      onClick={() => signIn("github")}
+                      disabled={isFetching}
+                    >
+                      Log in
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      className="mr-2 flex w-[7rem] cursor-default items-center justify-center rounded-lg bg-sky-500 px-5 py-1.5 text-sm font-semibold text-white outline-0 transition-all duration-150 ease-in-out hover:bg-sky-600 focus:outline-0 focus:ring-0
+                    focus:ring-sky-600"
+                      onClick={handleFetch}
+                      disabled={isFetching}
+                    >
+                      {isFetching ? "Loading..." : "Alakazam!"}
+                    </button>
+                  )}
+                  {status === "loading" ?? "Hold up..."}
+
                   {/* <button
                     type="button"
                     className="flex items-center font-normal"
