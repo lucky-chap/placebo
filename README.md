@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## **Placebo** - _Magical Tools For Everyone_ 🪄⚡
+
+<a href="https://placebo.vercel.app" target="_blank" rel="noreferrer">
+    <img src="https://placebo.vercel.app/og.png" />
+</a>
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https://github.com/lucky-chap/placebo) [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/lucky-chap/placebo)
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/lucky-chap/placebo)
+
+[![forthebadge](https://forthebadge.com/images/badges/made-with-typescript.svg)](https://typescriptlang.org)
+
+## About
+
+Placebo is home for a set of tools that can make your life easier using Artificial Intelligence using MindsDB. (More tools incoming). Placebo is my submission for the [Hashnode X MindsDB Hackathon](https://hashnode.com/hackathons/mindsdb) Try Placebo now.
+
+## Note 🚧
+
+Placebo is still under development and it is subject to change. Keep an eye out here for changes.
 
 ## Getting Started
 
-First, run the development server:
+- Run this in the command line to clone
+
+```bash
+git clone https://github.com/lucky-chap/placebo.git
+```
+
+- Then, `cd` into the directory `placebo`.
+- Create a new file in the root directory called `.env` and copy the contents
+  of [.env.example](./.env.example) into `.env`
+- Fill with your own credentials. After, do this:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Contributing
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
+If you want to help me make this project better, please do so. I'd really appreciate it.
+Please follow the guidelines in [CONTRIBUTING.md](./CONTRIBUTING.md) to get started
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## References
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
+- [MindsDB](https://mindsdb.com)
+- [Hashnode](https://hashnode.com)
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Tailwind CSS](https://tailwindcss.com)
+- [TypeScript](https://www.typescriptlang.org)
