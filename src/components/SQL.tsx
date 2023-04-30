@@ -10,6 +10,7 @@ import { useRecoilState } from "recoil";
 import { magicState } from "@/state";
 
 import demo from "../../public/demo.webp";
+import Dropdown from "./ui/Dropdown";
 
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -37,22 +38,19 @@ const SQLSorcery = () => {
   const [magicType, setMagicType] = useRecoilState(magicState);
 
   const [reversed, setReversed] = useState(false);
-  const [regexData, setRegexData] = useState("");
+  const [sqlData, setSqlData] = useState("");
   const [naturalLanguageData, setNaturalLanguageData] = useState("");
-  const [requestType, setRequestType] = useState<"to-eng" | "to-regex">(
-    "to-eng"
-  );
+  const [requestType, setRequestType] = useState<"to-lng" | "to-sql">("to-lng");
 
   const [isFetching, setIsFetching] = useState(false);
 
   const handleReverseChange = () => {
-    console.log("Change");
     if (reversed === true) {
       setReversed(false);
-      setRequestType("to-eng");
+      setRequestType("to-lng");
     } else {
       setReversed(true);
-      setRequestType("to-regex");
+      setRequestType("to-sql");
     }
   };
 
@@ -65,20 +63,18 @@ const SQLSorcery = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        text: requestType === "to-eng" ? regexData : naturalLanguageData,
+        text: requestType === "to-lng" ? sqlData : naturalLanguageData,
       }),
     })
       .then((data) => data.json())
       .then((res) => {
         setIsFetching(false);
         // console.log(res);
-        requestType === "to-eng"
-          ? setNaturalLanguageData(res.naturalLanguage)
-          : setRegexData(res.regex);
+        requestType === "to-lng"
+          ? setNaturalLanguageData(res.humanLanguage)
+          : setSqlData(res.regex);
       });
   }
-
-  console.log("Components");
 
   return (
     <main className="">
@@ -175,14 +171,17 @@ const SQLSorcery = () => {
                           placeholder="SQL Query"
                           className="font-space h-full w-full"
                           disabled={reversed === true}
-                          value={regexData}
-                          onChange={(e) => setRegexData(e.target.value)}
+                          value={sqlData}
+                          onChange={(e) => setSqlData(e.target.value)}
                         ></textarea>
                       </div>
                     </div>
                   </motion.div>
                   <div className="py-3"></div>
-                  <motion.div className="font-space" variants={item}>
+                  <motion.div className="font-space relative" variants={item}>
+                    <div className="absolute -top-2 right-0 z-20 w-1/2">
+                      {/* <Dropdown /> */}
+                    </div>
                     <div className="">
                       <div className="">
                         <textarea
@@ -204,7 +203,7 @@ const SQLSorcery = () => {
                     This is a work in progress as I had only a few hours on my
                     hands to build. Do let me know of any known issues{" "}
                     <a
-                      href="https://github.com/lukcy-chap/regexify/issues"
+                      href="https://github.com/lukcy-chap/placebo/issues"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sky-500 hover:text-sky-600"
@@ -287,7 +286,7 @@ const SQLSorcery = () => {
                 </motion.p>
                 <motion.p variants={item}>
                   <a
-                    href="https://github.com/lucky-chap/regexify"
+                    href="https://github.com/lucky-chap/placebo"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sky-500 hover:text-sky-600"

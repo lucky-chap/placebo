@@ -44,7 +44,6 @@ const Regex = () => {
   const [isFetching, setIsFetching] = useState(false);
 
   const handleReverseChange = () => {
-    console.log("Change");
     if (reversed === true) {
       setReversed(false);
       setRequestType("to-eng");
@@ -193,7 +192,7 @@ const Regex = () => {
                     This is a work in progress as I had only a few hours on my
                     hands to build. Do let me know of any known issues{" "}
                     <a
-                      href="https://github.com/lukcy-chap/regexify/issues"
+                      href="https://github.com/lukcy-chap/placebo/issues"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sky-500 hover:text-sky-600"
@@ -275,7 +274,7 @@ const Regex = () => {
                 </motion.p>
                 <motion.p variants={item}>
                   <a
-                    href="https://github.com/lucky-chap/regexify"
+                    href="https://github.com/lucky-chap/placebo"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sky-500 hover:text-sky-600"
