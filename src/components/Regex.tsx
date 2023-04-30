@@ -193,7 +193,7 @@ const Regex = () => {
                     This is a work in progress as I had only a few hours on my
                     hands to build. Do let me know of any known issues{" "}
                     <a
-                      href="https://github.com/lukcy-chap/placebo/issues"
+                      href="https://github.com/lucky-chap/placebo/issues"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sky-500 hover:text-sky-600"
