@@ -68,7 +68,7 @@ const Regex = () => {
       .then((data) => data.json())
       .then((res) => {
         setIsFetching(false);
-        // console.log(res);
+        console.log(res);
         requestType === "to-eng"
           ? setNaturalLanguageData(res.naturalLanguage)
           : setRegexData(res.regex);

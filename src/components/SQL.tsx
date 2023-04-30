@@ -72,7 +72,7 @@ const SQLSorcery = () => {
         // console.log(res);
         requestType === "to-lng"
           ? setNaturalLanguageData(res.humanLanguage)
-          : setSqlData(res.regex);
+          : setSqlData(res.sql);
       });
   }
 
