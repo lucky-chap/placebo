@@ -11,8 +11,55 @@ const spaceGrotesk = SpaceGrotesk({
 });
 
 export const metadata = {
-  title: "Merlin - Magical Tools For Everyone",
+  title: "Placebo - Magical Tools For Everyone",
   description: "A bit of magic here and there, ya know!",
+  generator: "Next.js",
+  applicationName: "Placebo",
+  referrer: "origin-when-cross-origin",
+  keywords: ["Next.js", "React", "JavaScript", "MindsDB", "Hashnode"],
+  authors: [{ name: "Virgil", url: "https://heylel.vercel.app" }],
+  colorScheme: "light",
+  creator: "Virgil",
+  publisher: "Virgil",
+  alternates: {},
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  icons: {
+    icon: "/app.png",
+    shortcut: "/app.png",
+    apple: "/app.png",
+    other: {
+      rel: "app.png",
+      url: "/app.png",
+    },
+  },
+  openGraph: {
+    title: "Placebo",
+    description: "Magical Tools For Everyone",
+    url: "https://placebo.vercel.app",
+    siteName: "placebo",
+    images: [
+      {
+        url: "https://placebo.vercel.app/og.png",
+        width: 800,
+        height: 600,
+      },
+      {
+        url: "https://placebo.vercel.app/og.png",
+        width: 1800,
+        height: 1600,
+        alt: "Magical Tools For Everyone",
+      },
+    ],
+    locale: "en-US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+  },
 };
 
 export default function RootLayout({

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { motion } from "framer-motion";
 import { useRecoilState } from "recoil";
@@ -142,6 +142,7 @@ const Regex = () => {
                   width={30}
                   height={30}
                   className="cursor-default rounded-full ring ring-sky-400"
+                  onClick={() => signOut({ callbackUrl: "/" })}
                 />
               </motion.div>
             </div>
