@@ -1,6 +1,7 @@
 import "./globals.css";
 import StateProvider from "@/providers/StateProvider";
 import AuthProvider from "@/providers/AuthProvider";
+import ThemeProvider from "@/providers/ThemeProvider";
 import { Space_Grotesk as SpaceGrotesk } from "next/font/google";
 
 const spaceGrotesk = SpaceGrotesk({
@@ -74,7 +75,9 @@ export default function RootLayout({
       >
         <AuthProvider>
           <StateProvider>
-            <main className="min-h-screen">{children}</main>
+            <ThemeProvider>
+              <main className="min-h-screen">{children}</main>
+            </ThemeProvider>
           </StateProvider>
         </AuthProvider>
       </body>

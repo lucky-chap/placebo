@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-white dark:bg-[#0b1120];
+  }
+}
+
 .logoGradient {
   background: rgb(236, 72, 153);
   background: linear-gradient(

@@ -109,6 +109,7 @@ const Regex = () => {
                   </g>
                 </svg>
                 Regexify
+                {/* move button state to global state */}
                 <button
                   type="button"
                   onClick={() => setMagicType("sql")}
