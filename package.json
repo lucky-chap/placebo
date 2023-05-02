@@ -10,11 +10,13 @@
     "lint": "next lint",
     "check-types": "tsc --noEmit --pretty",
     "format": "next lint --fix && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
-    "migrate": "prisma migrate dev"
+    "migrate": "prisma migrate dev",
+    "test": "jest"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.17",
+    "@monaco-editor/react": "^4.5.0",
     "@next-auth/prisma-adapter": "^1.0.6",
     "@prisma/client": "^4.13.0",
     "@radix-ui/react-dropdown-menu": "^2.0.4",
@@ -31,9 +33,11 @@
     "next": "13.3.1-canary.5",
     "next-auth": "^4.22.1",
     "next-themes": "^0.2.1",
+    "next-transpile-modules": "^10.0.0",
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-syntax-highlighter": "^15.5.0",
     "recoil": "^0.7.7",
     "sharp": "^0.32.1",
     "swr": "^2.1.5",
@@ -43,7 +47,21 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.1",
+    "@types/react-syntax-highlighter": "^15.5.6",
+    "babel-jest": "^29.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "mutationobserver-shim": "^0.3.7",
     "prettier-plugin-tailwindcss": "^0.2.8",
-    "prisma": "^4.13.0"
-  }
+    "prisma": "^4.13.0",
+    "react-test-renderer": "^18.2.0"
+  },
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ]
 }

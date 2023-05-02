@@ -10,7 +10,6 @@ import { useRecoilState } from "recoil";
 import { magicState } from "@/state";
 
 import demo from "../../public/demo.webp";
-import Dropdown from "./ui/Dropdown";
 
 const container = {
   hidden: { opacity: 1, scale: 0 },
@@ -140,18 +139,27 @@ const SQLSorcery = () => {
                 </button>
               </motion.h2>
               <motion.div className="" variants={item}>
-                <Image
-                  src={
-                    status === "unauthenticated"
-                      ? demo
-                      : (session?.user?.image as string)
-                  }
-                  alt="Profile"
-                  width={30}
-                  height={30}
-                  className="cursor-pointer rounded-full ring ring-sky-400"
-                  onClick={() => signOut({ callbackUrl: "/" })}
-                />
+                {/* status was checked like this because of jest tests */}
+                {(status === "unauthenticated" || status === "loading") && (
+                  <Image
+                    src={demo}
+                    alt="Profile"
+                    width={30}
+                    height={30}
+                    className="cursor-default rounded-full ring ring-sky-400"
+                    onClick={() => signIn("github")}
+                  />
+                )}
+                {status === "authenticated" && (
+                  <Image
+                    src={session?.user!.image as string}
+                    alt="Profile"
+                    width={30}
+                    height={30}
+                    className="cursor-default rounded-full ring ring-sky-400"
+                    onClick={() => signOut({ callbackUrl: "/" })}
+                  />
+                )}
               </motion.div>
             </div>
             <div className="divide-y divide-gray-300/50">
