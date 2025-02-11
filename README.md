@@ -5,10 +5,17 @@
 </a>
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https://github.com/lucky-chap/placebo) [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/lucky-chap/placebo)
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/lucky-chap/placebo)
-
 [![forthebadge](https://forthebadge.com/images/badges/made-with-typescript.svg)](https://typescriptlang.org)
+
+##  ☁ Open in the Cloud 
+[![Open in VS Code](https://img.shields.io/badge/Open%20in-VS%20Code-blue?logo=visualstudiocode)](https://vscode.dev/github/lucky-chap/placebo)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/lucky-chap/placebo)
+[![Open in CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/embed/react-markdown-preview-co1mj?fontsize=14&hidenavigation=1&theme=dark)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/lucky-chap/placebo)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/DanielSaromo/Pacman_UCB_Behavioral_Cloning?template=node&title=ngx-vcard%20Example)
+[![Open in Repl.it](https://replit.com/badge/github/withastro/astro)](https://replit.com/github/lucky-chap/placebo)
+[![Open in Glitch](https://img.shields.io/badge/Open%20in-Glitch-blue?logo=glitch)](https://glitch.com/edit/#!/import/github/lucky-chap/placebo)
+[![Open in Codeanywhere](https://codeanywhere.com/img/open-in-codeanywhere-btn.svg)](https://app.codeanywhere.com/#https://github.com/lucky-chap/placebo)
 
 ## About
 
